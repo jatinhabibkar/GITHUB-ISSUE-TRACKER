@@ -13,7 +13,7 @@ export default function MainChart() {
     method: "GET",
   };
   const getData = () => {
-
+    // fetch the stars and fork data for every repo
     axios
     .get(process.env.REACT_APP_BACKEND + "data", config)
         .then((response) => {
@@ -29,6 +29,7 @@ export default function MainChart() {
     getData();
     // eslint-disable-next-line
   }, []);
+  // polting data using react-google-charts library
   if (plotdata.length > 0)
     return (
       <div>

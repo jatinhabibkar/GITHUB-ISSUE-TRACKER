@@ -13,8 +13,10 @@ import {
 } from "recharts";
 
 export default function ProjectChart({ repo = null, org = null }) {
+  // state management using useState method
   const [plotData, setPlotData] = useState([]);
   const [plotStackData, setPlotStackData] = useState([]);
+  // configuring header
   let config = {
     mode: "no-cors",
     headers: {
@@ -25,7 +27,7 @@ export default function ProjectChart({ repo = null, org = null }) {
   const getData = () => {
     const commonData = [];
     let StackData = [];
-
+    // fetch data from backend for every repo
     axios
       .get(process.env.REACT_APP_BACKEND + `data/${org}/${repo}`, config)
       .then((response) => {
@@ -48,7 +50,6 @@ export default function ProjectChart({ repo = null, org = null }) {
           ...commonData,
         ]);
         setPlotStackData(StackData);
-        // {closed: 2, dateEnd: '2022-12-13', dateStart: '2022-11-13', open: 1, total: 3, …}
       });
   };
 
@@ -56,6 +57,7 @@ export default function ProjectChart({ repo = null, org = null }) {
     getData();
     // eslint-disable-next-line
   }, []);
+  // stack plot useded recharts library
   if (plotData.length > 0)
     return (
       <>
