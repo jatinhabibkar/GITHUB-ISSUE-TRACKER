@@ -14,3 +14,6 @@
 3) `source /env/bin/activate`
 4) `pip3 install -r requirements.txt`
 5) `python3 collect_data.py`
+
+## UI demo
+![UI image](./UI.png)
